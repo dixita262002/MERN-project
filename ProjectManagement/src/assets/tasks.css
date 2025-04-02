@@ -1,0 +1,116 @@
+/* Body and General Layout 
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}*/
+
+/* Container for the Tasks Form */
+.tasks-container {
+  width: 100%;
+  max-width: 600px;
+  padding: 40px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+/* Form Title */
+.tasks-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #4CAF50;
+}
+
+/* Form Layout */
+.tasks-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Individual form group for input fields */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels for form fields */
+.form-group label {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+/* Input fields for text, date, etc. */
+input[type="text"], input[type="date"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  transition: border-color 0.3s ease;
+}
+
+/* Focus State for Input Fields */
+input[type="text"]:focus, input[type="date"]:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.6);
+}
+
+/* Submit Button */
+.submit-button {
+  padding: 12px;
+  font-size: 18px;
+  color: white;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+/* Hover effect for submit button */
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 768px) {
+  .tasks-container {
+    padding: 20px;
+    margin: 10px;
+  }
+
+  .tasks-title {
+    font-size: 24px;
+  }
+
+  .form-group label {
+    font-size: 14px;
+  }
+
+  input[type="text"], input[type="date"] {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .submit-button {
+    font-size: 16px;
+    padding: 10px;
+  }
+}

@@ -1,0 +1,1252 @@
+<div className='signup template justify-content-center align-items-center 100-vh bg-primary text-align-center' >
+      <div className='form_container  p-5 rounded bg-white'>
+        
+        <form onSubmit={handleSubmit(submitHandler)}>
+          <h3 className='text-center'>Sign up</h3>
+          <center>
+         <div className='mb-2'>
+          <label htmlFor='fname'>First Name</label>
+          <input type='text' placeholder='Enter First Name' className='form-conterol' {...register("firstname")} />
+          
+          </div>
+          <div className='mb-2'>
+          <label htmlFor='lname'>Last Name</label>
+          <input type='text' placeholder='Enter Last Name' className='form-conterol' {...register("lastname")} />
+          
+
+          </div>
+          <div className='mb-2'>
+          <label htmlFor='email'>Email</label>
+          <input type='email' placeholder='Enter Email' className='form-conterol' {...register("email")} />
+        
+          </div>
+          <div className='mb-2'>
+          <label htmlFor='password'>Password</label>
+          <input type='password' placeholder='Enter Password' className='form-conterol' {...register("password")} />
+        
+          </div>
+          </center>
+  
+          <div className='d-grid'>
+               <button className='btn btn-primary'>Signup</button>
+          </div>
+          <p className='text-end mt-2'>
+            Alredy Registared   <Link to="/login" className='ms-2'> Login </Link>
+          </p>
+        </form>
+        </div>
+    </div>
+
+
+
+<div className='login template justify-content-center align-items-center 100-vh bg-primary text-align-center' >
+      <div className='form_container  p-5 rounded bg-white'>
+        <center>
+        <form onSubmit={handleSubmit(submitHandler)}>
+          <h3 className='text-center'>Login</h3>
+          <div className='mb-3'>
+          <label htmlFor='email'>Email</label>
+          <input type='email' placeholder='Enter Email' className='form-conterol'{...register("email",validationSchima.emailValidator)} />
+          {
+            errors.email?.message
+          }
+          </div>
+          <div className='mb-2'>
+          <label htmlFor='password'>Password</label>
+          <input type='password' placeholder='Enter Password' className='form-conterol' {...register("password",validationSchima.passwordValidator)}  />
+          {
+            errors.password?.message
+          }
+          </div>
+          <div className='mb-2 justify-content-center align-items-center'><center align-item-left>
+            <input type='checkbox' className='custom-control custom-checkbox 'id='check'/>
+            <label  htmlFor='check' className='custom-input-label ms-2'>Remember me
+            </label>
+          </center>
+          </div>
+          <div className='d-grid align-item'>
+               <button className='btn btn-primary'>Login</button>
+          </div>
+          <p className='text-end mt-2'>
+            Forgot <a href=''>Password ? </a><Link to="/signup" className='ms-2'>Sign up</Link>
+          </p>
+        </form>
+        </center>
+        </div>
+    </div>
+
+
+
+
+    password:.................
+    /*passwordValidator:{
+      required:{
+        value:true,
+        message:"password is required",
+      },
+      minLength:{
+        value:8,
+        message:"password contain at last 8 characters",
+      },
+      maxLength:{
+        value:30,
+        message:"password should not be greater than 30 characters",
+      },
+      pattern:{
+        value:/^(?=.*[A-Z])(?=.*\d.*\d.*\d)(?=.*[!@#$%^&*(),.?":{}/<>]).*$  /,
+        message:"password must have a special character,uppercase latter,and itegers",
+      },
+    },
+
+    =============
+    Admin Profile
+    =============
+
+    // import axios from 'axios'
+// import React, { useEffect, useState } from 'react'
+// import { useForm } from 'react-hook-form'
+
+// export const AdminProfile = () => {
+
+
+
+//   const [projects,setProjects] =useState([])
+// const getallprojects = async()=>{
+//   const res = await axios.get("/project/getallprojects")
+//   console.log(res.data)
+//   setProjects(res.data.data)
+// }
+
+// useEffect(()=>{
+//   getallprojects()
+// },[])
+
+// const {register,handleSubmit} = useForm()
+
+// const submitHandler = async(data) =>{
+//   console.log(data)
+// }
+
+
+//   return (
+//     <div style={{textAlign:"center"}}>
+//       <h3>ADMIN PROFILE</h3>
+
+//       <form onSubmit={handleSubmit(submitHandler)}>
+//         <div>
+//           <label>ProjectName:</label>
+//           <input type='text' {...register("ProjectName")}></input>
+//         </div>
+//         <div>
+//           <label>Technology:</label>
+//           <input type='text' {...register("Technology")}></input>
+//         </div>
+//         <div>
+//           <label>StartDate:</label>
+//           <input type='date' {...register("StartDate")}></input>
+//         </div>
+        
+//         <div>
+//           <labe>Status</labe>
+//           <select {...register("Status")}>
+//             <option value="Active">Active</option>
+//             <option value="Completed">Completed</option>
+//             <option value="On Hold">On Hold</option>
+//           </select>
+//         </div>
+//         <div>
+//           <label>Budget:</label>
+//           <input type='number' step="0.01" {...register("Budget")}></input>
+ 
+//         </div>
+//         <div>
+//         <label>EndDate:</label>
+//           <input type='date' {...register("EndDate")}></input>
+//         </div>
+//           <div>
+//         <button type='submit'>create project</button>
+//           </div>
+
+//       </form>
+
+//     </div>
+//   )
+// }
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'  // Import useNavigate from react-router-dom
+
+export const AdminProfile = () => {
+  const [projects, setProjects] = useState([])
+  const navigate = useNavigate()  // Initialize the navigate function
+
+  const getallprojects = async () => {
+    const res = await axios.get("/project/getallprojects")
+    console.log(res.data)
+    setProjects(res.data.data)
+  }
+
+  useEffect(() => {
+    getallprojects()
+  }, [])
+
+  const { register, handleSubmit } = useForm()
+
+  const submitHandler = async (data) => {
+    console.log(data)
+    
+    // Assuming the form submits the project data to the server:
+    try {
+      const res = await axios.post('/project/create', data)  // Make a POST request to your backend
+      console.log('Project created:', res.data)
+
+      // After successful form submission, navigate to the servers page:
+      navigate('/servers')
+    } catch (error) {
+      console.error('Error creating project:', error)
+    }
+  }
+
+  return (
+    <div style={styles.container}>
+      <h3>ADMIN PROFILE</h3>
+
+      <form onSubmit={handleSubmit(submitHandler)} style={styles.form}>
+        <div style={styles.inputGroup}>
+          <label>Project Name:</label>
+          <input type="text" {...register("ProjectName")} />
+        </div>
+        <div style={styles.inputGroup}>
+          <label>Technology:</label>
+          <input type="text" {...register("Technology")} />
+        </div>
+        <div style={styles.inputGroup}>
+          <label>Start Date:</label>
+          <input type="date" {...register("StartDate")} />
+        </div>
+
+        <div style={styles.inputGroup}>
+          <label>Status:</label>
+          <select {...register("Status")}>
+            <option value="Active">Active</option>
+            <option value="Completed">Completed</option>
+            <option value="On Hold">On Hold</option>
+          </select>
+        </div>
+        <div style={styles.inputGroup}>
+          <label>Budget:</label>
+          <input type="number" step="0.01" {...register("Budget")} />
+        </div>
+        <div style={styles.inputGroup}>
+          <label>End Date:</label>
+          <input type="date" {...register("EndDate")} />
+        </div>
+
+        <div style={styles.submitButton}>
+          <button type="submit">Create Project</button>
+        </div>
+      </form>
+    </div>
+  )
+}
+
+const styles = {
+  // Full viewport height for centering the content vertically
+  container: {
+    display: 'flex',
+    justifyContent: 'flex-start', // Align to the left side initially
+    alignItems: 'center',      // Center vertically
+    height: '100vh',           // Full screen height
+    textAlign: 'center',       // Center text inside the div
+    backgroundColor: '#f4f4f4', // Optional, for better visibility
+    overflow: 'hidden',        // Prevent overflow and scrollbars
+    paddingLeft: '400px',       // Shift the form slightly to the right
+  },
+  
+  form: {
+    display: 'flex',
+    flexDirection: 'column',  // Stack form elements vertically
+    gap: '15px',              // Space between the form elements
+    maxWidth: '400px',        // Limit the form width
+    width: '100%',            // Allow it to be responsive
+    padding: '20px',          // Padding around the form
+    border: '1px solid #ddd', // Subtle border
+    borderRadius: '8px',      // Rounded corners
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Soft shadow for elevation
+    backgroundColor: 'white', // Form background color
+  },
+  
+  inputGroup: {
+    display: 'flex',
+    flexDirection: 'column',  // Stack label and input vertically
+    gap: '8px',               // Space between label and input
+  },
+  
+  submitButton: {
+    marginTop: '20px',       // Space above the button
+  },
+}
+
+
+
+
+==========================================================
+
+Addproject
+
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
+
+export const AddProject = () => {
+
+    const [projects, setProjects] = useState([])
+    const getAllProjectes = async()=>{
+        const res = await axios.get("/project/getAllProjectes")
+        console.log(res.data)
+        setProjects(res.data.data)
+    }
+
+    useEffect(()=>{
+        getAllProjectes()
+    },[])
+    const {register,handleSubmit} = useForm()
+
+    const submitHandler = async(data) =>{
+       console.log(data)
+    
+    }
+  return (
+    <div style={{textAlign:"center"}}>
+        <h3>Add Project</h3>
+        <form onSubmit={handleSubmit(submitHandler)}>
+            <div>
+                <label>projectName</label>
+                <select {...register("projectName")} >
+                    <option value="project management">project management</option>
+                    <option value="smartParking">smartParking</option>
+                    <option value="Time tracker"> Time tracker</option>
+                    <option value="e-card">e-card</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div>
+                <label>Description</label>
+                <input {...register("description")}></input>
+            </div>
+            <div>
+                <label>Technology</label>
+                <select type='text' {...register("Technology")}>
+                <option value="MERN STACK">MERN STACK</option>
+                    <option value="PAYTHON">PAYTHON</option>
+                    <option value="JAVA SCRIPT"> JAVA SCRIPT</option>
+                    <option value="HTML">HTML</option>
+                    <option value="PHP">PHP</option>
+                    <option value="Other tech...">Other Tech...</option>
+                </select>
+            </div>
+            <div>
+                <label>TeamName</label>
+                <input type='text' {...register("teamName")}></input>
+            </div>
+            <div>
+           <labe>Status</labe>
+           <select {...register("Status")}>
+             <option value="Active">Active</option>
+             <option value="Completed">Completed</option>
+             <option value="On Hold">On Hold</option>
+           </select>
+         </div>
+            <div>
+                <label>TeamMembers</label>
+                <input type='number' {...register("teamMembers")}></input>
+            </div>
+            <div>
+                <label>StartDate</label>
+                <input type='date' {...register("startDate")}></input>
+            </div>
+            <div>
+                <label>EndDate</label>
+                <input type='date' {...register("endate")}></input>
+            </div>
+            
+            <div>
+                <button type='submit' className='btn btn-primary'>Add Project</button>
+            </div>
+        </form>
+
+    </div>
+  )
+}
+
+...............,,,,,,,,,,,,,,,,,,,,,,,,,
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import "./addproject.css"; // Add this line to include the CSS file
+import { data } from "react-router-dom";
+
+export const AddProject = () => {
+  const [projects, setProjects] = useState([]);
+
+  const getAllProjects = async () => {
+    const res = await axios.get("/project/getAllProjectes",data);
+    console.log(res.data);
+    setProjects(res.data.data);
+  };
+
+  useEffect(() => {
+    getAllProjects();
+  }, []);
+
+  const { register, handleSubmit } = useForm();
+
+  const submitHandler = async (data) => {
+    console.log(data);
+  };
+
+  return (
+    <div className="container">
+      <h3 className="title">Add Project</h3>
+      <form onSubmit={handleSubmit(submitHandler)} className="form">
+        <div className="form-group">
+          <label>Project Name</label>
+          <select {...register("projectName")} className="form-control">
+          <option value="select">Select Project</option>
+            <option value="project management">Project Management</option>
+            <option value="smartParking">Smart Parking</option>
+            <option value="time tracker">Time Tracker</option>
+            <option value="e-card">E-Card</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div className="form-group">
+          <label>Description</label>
+          <input {...register("description")} className="form-control" />
+        </div>
+        <div className="form-group">
+          <label>Technology</label>
+          <select {...register("Technology")} className="form-control">
+          <option value="select">select Technology</option>
+            <option value="MERN STACK">MERN STACK</option>
+            <option value="PYTHON">PYTHON</option>
+            <option value="JAVA SCRIPT">JAVA SCRIPT</option>
+            <option value="HTML">HTML</option>
+            <option value="PHP">PHP</option>
+            <option value="Other Tech...">Other Tech...</option>
+          </select>
+        </div>
+        <div className="form-group">
+          <label>Team Name</label>
+          <input type="text" {...register("teamName")} className="form-control" />
+        </div>
+        <div className="form-group">
+          <label>Status</label>
+          <select {...register("Status")} className="form-control">
+            <option value="select">Select Status</option>
+            <option value="Active">Active</option>
+            <option value="Completed">Completed</option>
+            <option value="On Hold">On Hold</option>
+          </select>
+        </div>
+        <div className="form-group">
+          <label>Team Members</label>
+          <input type="number" {...register("teamMembers")} className="form-control" />
+        </div>
+        <div className="form-group">
+          <label>Start Date</label>
+          <input type="date" {...register("startDate")} className="form-control" />
+        </div>
+        <div className="form-group">
+          <label>End Date</label>
+          <input type="date" {...register("endate")} className="form-control" />
+        </div>
+        <div>
+          <button type="submit" className="btn btn-primary">
+            Add Project
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .title {
+    text-align: center;
+    color: #333;
+    font-family: Arial, sans-serif;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+==============================================
+ADD Project
+
+import axios from "axios";
+import React, {useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import "./addproject.css"; // Add this line to include the CSS file
+import { data } from "react-router-dom";
+    
+      export const AddProject = () => {    
+  const [projects, setProjects] = useState([]);
+
+  const getAllProjects = async () => {
+    const res = await axios.get("/team/all",data);
+    console.log(res.data);
+    setProjects(res.data.data);
+  };
+
+  useEffect(() => {
+    getAllProjects();
+  }, []);
+
+  const { register, handleSubmit } = useForm();
+
+  const submitHandler = async (data) => {
+    console.log(data);
+  };
+
+  return (
+    <div className="container">
+      <h3 className="title">Project Team</h3>
+      <form onSubmit={handleSubmit(submitHandler)} className="form">
+        <div className="form-group">
+          <label>Project Name</label>
+          <select {...register("projectName")} className="form-control">
+          <option value="select">Select Project</option>
+            <option value="project management">Project Management</option>
+            <option value="smartParking">Smart Parking</option>
+            <option value="time tracker">Time Tracker</option>
+            <option value="e-card">E-Card</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div className="form-group">
+          <label>Description</label>
+          <input {...register("description")} className="form-control" />
+        </div>
+        <div className="form-group">
+          <label>Technology</label>
+          <select {...register("Technology")} className="form-control">
+          <option value="select">select Technology</option>
+            <option value="MERN STACK">MERN STACK</option>
+            <option value="PYTHON">PYTHON</option>
+            <option value="JAVA SCRIPT">JAVA SCRIPT</option>
+            <option value="HTML">HTML</option>
+            <option value="PHP">PHP</option>
+            <option value="Other Tech...">Other Tech...</option>
+          </select>
+        </div>
+        <div className="form-group">
+          <label>Team Name</label>
+          <input type="text" {...register("teamName")} className="form-control" />
+        </div>
+        <div className="form-group">
+          <label>Status</label>
+          <select {...register("Status")} className="form-control">
+            <option value="select">Select Status</option>
+            <option value="Active">Active</option>
+            <option value="Completed">Completed</option>
+            <option value="On Hold">On Hold</option>
+          </select>
+        </div>
+        <div className="form-group">
+          <label>Team Members</label>
+          <input type="number" {...register("teamMembers")} className="form-control" />
+        </div>
+        <div className="form-group">
+          <label>Start Date</label>
+          <input type="date" {...register("startDate")} className="form-control" />
+        </div>
+        <div className="form-group">
+          <label>End Date</label>
+          <input type="date" {...register("endate")} className="form-control" />
+        </div>
+        <div>
+          <button type="submit" className="btn btn-primary">
+            Add Project
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+add project
+
+
+
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
+//import "./AddProject.css"
+
+
+export const AddProject = () => {
+
+
+const [roles,setRoles] = useState([])
+const [users,setUsers] = useState([])
+const [projects,setProjects] = useState([])
+
+  const getAllRoles = async()=>{
+    const res = await axios.get("/roles")
+    console.log(res.data)
+    setRoles(res.data.data)
+  }
+
+  const getUserByRoleId = async(id)=>{
+    alert(id)
+    //alert(id) //api
+    const res = await axios.get("getUserByRole/"+id);
+    console.log("user response...",res.data)
+   setUsers(res.data.data)
+
+  }
+  const getProjectByUserId = async(id) => {
+  
+    alert(id)
+    const res = await axios.get("/project/getprojectbyuser/"+id)
+    console.log("project respons...",res.data)
+    setProjects(res.data.data)
+  }
+
+  
+
+ 
+  useEffect(()=>{
+    getAllRoles()
+  },[])
+
+  const {register,handleSubmit} = useForm()
+  const submitHandler = async(data) =>{
+    const userId = localStorage.getItem("id")
+    data.userId = userId;
+            //console.log(data)
+            const res = await axios.post("/team/addteam",data)
+            console.log(res.data)
+  }
+  return (
+    <div style={{textAlign:"center"}}>
+
+      <h3>PROJECT_TEAM</h3>
+      <form onSubmit={handleSubmit(submitHandler)}>
+        <div>
+      <label>TeamName</label>
+          <input type='text' {...register("name")} ></input>
+        </div>
+        <div>
+      <label>Contect</label>
+          <input type='text' {...register("contect")} ></input>
+        </div>
+        
+       <div>
+          <label>Status</label>
+          <input type='text' {...register("status")} ></input>
+        </div>
+        <div>
+          <label>ROLE</label>
+        
+          <select {...register("roleId")} onChange={(event)=>{getUserByRoleId(event.target.value)}}>
+            <option>SELECT ROLE</option>
+            {
+              roles?.map((role)=>{
+                return <option value={role._id} >{role.name}</option>
+              })
+            }
+          </select>
+        </div>
+        <div>
+
+          <label> USER</label>
+          <select {...register("userId")} onChange={(event)=>{getProjectByUserId(event.target.value)}} >
+            <option>SELECT USER</option>
+            {
+              users?.map((user)=>{
+               return <option value={user._id}>{user.name}</option>
+               })}
+          </select>
+        </div>
+
+        <div>
+          <label>PROJECTS</label>
+          <select {...register("projectId")} >
+            <option>SELECT PROJECT</option>
+            {
+              projects?.map((project)=>{
+                return <option key={project._id} value={project._id} >{project.name}</option>
+              })
+            }
+          </select>
+        </div>
+        <div>
+          <button type='submit'>ADD</button>
+        </div>
+
+      </form>
+    </div>
+  )
+}
+
+
+
+
+
+
+
+
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import "./AddProject.css"
+
+
+export const AddProject = () => {
+const [projects,setProjects] = useState([])
+
+  const getAllProjects = async()=>{  
+    const res = await axios.get("/project/all")
+    console.log(res.data)
+    setProjects(res.data.data)
+  }
+
+ // const getTeamByProjectId = async(id)=>{
+   // alert(id)
+    //alert(id) //api
+   // const res = await axios.get("/team/getteambyproject/"+id);
+   // console.log("user response...",res.data)
+   //setTeams(res.data.data)
+
+//  }
+
+  useEffect(()=>{
+    getAllProjects()
+  },[])
+
+  const {register,handleSubmit} = useForm()
+  const submitHandler = async(data) =>{
+  const userId = localStorage.getItem("id")
+   data.userId = userId;
+           console.log(data)
+          const res = await axios.post("/team/addteam",data)
+           console.log(res.data)
+  }
+  return (
+    <div className='addproject-container' style={{textAlign:"center"}}>
+
+      <h3 className="addproject-title">PROJECT_TEAM</h3>
+      <form onSubmit={handleSubmit(submitHandler)}>
+      <div className='form-group'>
+          <label className='teamname'>teamName</label>
+          <select {...register("teamname")} className='form-control' id='teamname'>
+            <option>SELECT NAME</option>
+            <option value="Forward Force "> Forward Force </option>
+            <option value="Risk Rebels ">Risk Rebels </option>
+            <option value="Active ">Active </option>
+            <option value="Agile Avengers ">Agile Avengers</option>
+          </select>
+      </div>
+                
+        <div className='form-group'>
+          <label className='projectId'>Projects:</label>        
+          <select {...register("projectId")} className='form-control' id='projectId'>
+            <option>SELECT PROJECTS</option>
+            {
+              projects?.map((project)=>{
+                return <option value={project._id} >{project.title}</option>
+              })
+            }
+          </select>
+        </div>
+     
+        <div className='form-group' >
+          <label className='status'>Status</label>
+          <select {...register("Status" )} className='form-control' id='status' >
+            <option value="select">SELECT STATUS</option>
+            <option value="true">true</option>
+            <option value="false">false</option>
+          </select>
+        </div>
+        <div className='form-group'>
+          <label className='contect'>Contect</label>
+          <input type='text' placeholder='Enter Number' {...register("contect")} className='form-control'></input>
+        </div>
+
+        <div className='form-group'>
+          <label className='technology'>Technology</label>
+          <select {...register("technology")} className='form-control' id='technology' >
+            <option value="select">SELECT TECHNOLOGY</option>
+            <option value="mernstack">MERN STACK</option>
+            <option value="php">PHP(html,css)</option>
+            <option value="python">PYTHON</option>
+            <option value="javascript">JAVA SCRIPT</option>
+            <option value="other">OTHER</option>
+          </select>
+        </div>
+        <div className='form-group'>
+          <button type='submit' className='btn-submit'>SUBMIT</button>
+        </div>
+
+      </form>
+    </div>
+  );
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ TASK >JSX
+
+ import axios from 'axios'
+import React, { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import '../../assets/tasks.css'
+
+export const Tasks = () => {
+
+  const {register,handleSubmit} = useForm()
+  const submitHandler = async(data) =>{
+    console.log(data)
+
+    const res = await axios.post("/task/addtask",data)
+    console.log(res.data)
+  
+    
+    if(res.status === 201){
+      alert("project created successfully")
+      //navigate("/login")
+}        
+else{
+      alert("user not created")
+}
+  }
+  return (
+    <div style={{textAlign:"center"}} className="tasks-container">
+      <h3 className="tasks-title">Tasks</h3>
+      <form onSubmit={handleSubmit(submitHandler)} className="tasks-form" >
+        <div className="form-group">
+      <label>Task Name:</label>
+            <input type="text"   {...register("taskName")}>
+            </input>
+            </div>
+            <div className="form-group">
+              <label>description</label>
+              <input type='text' {...register("description")}></input>
+            </div>
+          {/*}  <input
+                type="text"
+                placeholder="Task Name"
+                value={task.name}
+                onChange={(e) => setTask({ ...task, name: e.target.value })}
+            />*/}
+            {/*<div className="form-group">
+              <label>Priority</label>
+              <input type='text' {...register("priority")}></input>
+            </div>*/}
+           
+            <div className="form-group">
+              <label>EndDate</label>
+              <input type='date' {...register("endDate")}></input>
+            </div>
+            <div className="form-group">
+              <label>UpdatedDate</label>
+              <input type='date' {...register("updatedDate")}></input>
+            </div>
+           
+            <div>
+              <button className="submit-button"  type='submit' value="submit">SUBMIT</button>
+            </div>
+        </form>
+    </div>
+  )
+}
+
+
+navbar
+import React from 'react'
+
+export const UserNavbar = () => {
+  return (
+        <nav className="app-header navbar navbar-expand bg-body">  
+      <div className="container-fluid">
+        <ul className="navbar-nav">
+          <li className="nav-item">
+            <a
+              className="nav-link"
+              data-lte-toggle="sidebar"
+              href="#"
+              role="button" >
+              <i className="bi bi-list" />
+            </a>
+          </li>
+          <li className="nav-item d-none d-md-block">
+            <a href="#" className="nav-link">
+              Home
+            </a>
+          </li>
+          <li className="nav-item d-none d-md-block">
+            <a href="#" className="nav-link">
+              Contact
+            </a>
+          </li>
+        </ul>
+        <ul className="navbar-nav ms-auto">
+          <li className="nav-item">
+            <a
+              className="nav-link"
+              data-widget="navbar-search"
+              href="#"
+              role="button"
+            >
+              <i className="bi bi-search" />
+            </a>
+          </li>
+
+          <li className="nav-item dropdown">
+            <a className="nav-link" data-bs-toggle="dropdown" href="#">
+              <i className="bi bi-chat-text" />
+              <span className="navbar-badge badge text-bg-danger">3</span>
+            </a>
+            <div className="dropdown-menu dropdown-menu-lg dropdown-menu-end">
+              <a href="#" className="dropdown-item">
+                <div className="d-flex">
+                  <div className="flex-shrink-0">
+                    <img
+                      src="../../dist/assets/img/user1-128x128.jpg"
+                      alt="User Avatar"
+                      className="img-size-50 rounded-circle me-3" />
+                  </div>
+                  <div className="flex-grow-1">
+                    <h3 className="dropdown-item-title">
+                      Brad Diesel
+                      <span className="float-end fs-7 text-danger">
+                        <i className="bi bi-star-fill" />
+                      </span>
+                    </h3>
+                    <p className="fs-7">Call me whenever you can...</p>
+                    <p className="fs-7 text-secondary">
+                      <i className="bi bi-clock-fill me-1" /> 4 Hours Ago
+                    </p>
+                  </div>
+                </div>
+              </a>
+              <div className="dropdown-divider" />
+              <a href="#" className="dropdown-item">
+              
+                <div className="d-flex">
+                  <div className="flex-shrink-0">
+                    <img src="../../dist/assets/img/user8-128x128.jpg"
+                      alt="User Avatar"
+                      className="img-size-50 rounded-circle me-3"  />
+                  </div>
+                  <div className="flex-grow-1">
+                    <h3 className="dropdown-item-title">
+                      John Pierce
+                      <span className="float-end fs-7 text-secondary">
+                        <i className="bi bi-star-fill" />
+                      </span>
+                    </h3>
+                    <p className="fs-7">I got your message bro</p>
+                    <p className="fs-7 text-secondary">
+                      <i className="bi bi-clock-fill me-1" /> 4 Hours Ago
+                    </p>
+                  </div>
+                </div>
+              </a>
+              <div className="dropdown-divider" />
+              <a href="#" className="dropdown-item">
+                <div className="d-flex">
+                  <div className="flex-shrink-0">
+                    <img
+                      src="../../dist/assets/img/user3-128x128.jpg"
+                      alt="User Avatar"
+                      className="img-size-50 rounded-circle me-3"
+                    />
+                  </div>
+                  <div className="flex-grow-1">
+                    <h3 className="dropdown-item-title">
+                      Nora Silvester
+                      <span className="float-end fs-7 text-warning">
+                        <i className="bi bi-star-fill" />
+                      </span>
+                    </h3>
+                    <p className="fs-7">The subject goes here</p>
+                    <p className="fs-7 text-secondary">
+                      <i className="bi bi-clock-fill me-1" /> 4 Hours Ago
+                    </p>
+                  </div>
+                </div>
+              </a>
+              <div className="dropdown-divider" />
+              <a href="#" className="dropdown-item dropdown-footer">
+                See All Messages
+              </a>
+            </div>
+          </li>
+
+          <li className="nav-item dropdown">
+            <a className="nav-link" data-bs-toggle="dropdown" href="#">
+              <i className="bi bi-bell-fill" />
+              <span className="navbar-badge badge text-bg-warning">15</span>
+            </a>
+            <div className="dropdown-menu dropdown-menu-lg dropdown-menu-end">
+              <span className="dropdown-item dropdown-header">
+                15 Notifications
+              </span>
+              <div className="dropdown-divider" />
+              <a href="#" className="dropdown-item">
+                <i className="bi bi-envelope me-2" /> 4 new messages
+                <span className="float-end text-secondary fs-7">3 mins</span>
+              </a>
+              <div className="dropdown-divider" />
+              <a href="#" className="dropdown-item">
+                <i className="bi bi-people-fill me-2" /> 8 friend requests
+                <span className="float-end text-secondary fs-7">12 hours</span>
+              </a>
+              <div className="dropdown-divider" />
+              <a href="#" className="dropdown-item">
+                <i className="bi bi-file-earmark-fill me-2" /> 3 new reports
+                <span className="float-end text-secondary fs-7">2 days</span>
+              </a>
+              <div className="dropdown-divider" />
+              <a href="#" className="dropdown-item dropdown-footer">
+                {" "}
+                See All Notifications{" "}
+              </a>
+            </div>
+          </li>
+
+          <li className="nav-item">
+            <a className="nav-link" href="#" data-lte-toggle="fullscreen">
+              <i data-lte-icon="maximize" className="bi bi-arrows-fullscreen" />
+              <i
+                data-lte-icon="minimize"
+                className="bi bi-fullscreen-exit"
+                style={{ display: "none" }}
+              />
+            </a>
+          </li>
+
+          <li className="nav-item dropdown user-menu">
+            <a
+              href="#"
+              className="nav-link dropdown-toggle"
+              data-bs-toggle="dropdown" >
+              <img
+                src="../../dist/assets/img/user2-160x160.jpg"
+                className="user-image rounded-circle shadow"
+                alt="User Image"/>
+              <span className="d-none d-md-inline">Alexander Pierce</span>
+            </a>
+            <ul className="dropdown-menu dropdown-menu-lg dropdown-menu-end">
+            
+              <li className="user-header text-bg-primary">
+                <img
+                  src="../../dist/assets/img/user2-160x160.jpg"
+                  className="rounded-circle shadow"
+                  alt="User Image"
+                />
+                <p>
+                  Alexander Pierce - Web Developer
+                  <small>Member since Nov. 2023</small>
+                </p>
+              </li>
+
+              <li className="user-body">
+                <div className="row">
+                  <div className="col-4 text-center">
+                    <a href="#">Followers</a>
+                  </div>
+                  <div className="col-4 text-center">
+                    <a href="#">Sales</a>
+                  </div>
+                  <div className="col-4 text-center">
+                    <a href="#">Friends</a>
+                  </div>
+                </div>
+              </li>
+
+              <li className="user-footer">
+                <a href="#" className="btn btn-default btn-flat">
+                  Profile
+                </a>
+                <a href="#" className="btn btn-default btn-flat float-end">
+                  Sign out
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    
+  );
+};
+  
+
+
+
+
+
+
+
+
+
+
+updatedDate
+
+
+
+
+
+
+
+
+
+import axios from 'axios'
+import React from 'react'
+import { useForm } from 'react-hook-form'
+import { useNavigate, useParams } from 'react-router-dom'
+
+export const UpdateMyProject = () => {
+    const id = useParams().id;
+    const {register,handleSubmit} = useForm({
+        defaultValues: async()=> {
+            const res = await axios.get("/project/getprojectbyId/"+id)
+            return res.data.data
+        }
+                    
+    })
+    const navigate = useNavigate()
+ 
+   const SubmitHandler = async(data) =>{
+    data.userId = localStorage.getItem("id")
+    delete data._id;
+    console.log(data);
+    const res = await axios.put("/project/updateproject/"+id, data)
+  //data.userId = localStorage.getItem("id")
+   console.log(data)
+   console.log(data.image[0])              //array --->0 index access
+ 
+   const formData = new FormData();
+   formData.append("title",data.title);
+   formData.append("description",data.description);
+   formData.append("technology",data.technology);
+   formData.append("startDate",data.startDate);
+   formData.append("completionDate",data.completionDate);
+   formData.append("image",data.image[0]);
+     
+     //const res = await axios.post("/project/addproject",data)
+     const res = await axios.post("/project/addwithfile",formData)
+     console.log(res);            //axios
+     console.log(res.data) 
+           //api respons
+     //if(res.status === 201){
+     //  alert("project created successfully")
+       navigate("/projectmanager/projectscreen")
+ ///}        
+ //else{
+   //    alert("user not created")
+ //}
+ }
+  
+  return (
+    <div style={{textAlign:"center"}} className="form-container">
+
+      <h3 className="form-header">PROJECT</h3>
+      <form onSubmit={handleSubmit(SubmitHandler)} encType='multipart/form-data'>
+        
+        <div className="form-group">
+          <label className="form-label">Title</label>
+          <input className="form-input" type='text' {...register("title")}></input>
+        </div>
+        <div className="form-group">
+          <lable  className="form-label">Desciption</lable>
+          <input className="form-input"  type='text' {...register("description")}></input>
+        </div>
+        <div className="form-group">
+          <label  className="form-label">Technology</label>
+          <input className="form-input" type='text' {...register("technology")}></input>
+        </div>
+        <div  className="form-group">
+          <label className="form-label">startDate</label>
+          <input className="form-input" type='date' {...register("startDate")}></input>
+        </div>
+        <div className="form-group">
+          <label className="form-label">EndDate</label>
+          <input className="form-input" type='date' {...register("completionDate")}></input>
+        </div>    
+      <div className="form-group">
+        <label className="form-label">select image URL </label>
+        <input className="form-input"  type='file' {...register("image")}></input>
+       </div>
+          <input  className="form-submit"  type='submit' value="submit"></input>
+      </form>
+        
+    </div>
+  )
+}
+  
