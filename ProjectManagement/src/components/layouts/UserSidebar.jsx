@@ -1,17 +1,12 @@
-import React, { useState } from 'react'
+{/*import React, { useState } from 'react'
 import { UserNavbar } from './UserNavbar'
 import { Link, Outlet } from 'react-router-dom'
 
 export const UserSidebar = () => {
-  const [isSidebarOpen, setSidebarOpen] = useState(true);
-
-  const toggleSidebar = () => {
-    console.log("toggleSidebar");
-    setSidebarOpen(!isSidebarOpen);
-  };
+  
   return (
    <>
-   <UserNavbar toggleSidebar={toggleSidebar} />
+   <UserNavbar />
    <aside
         className="app-sidebar bg-body-secondary shadow"
         data-bs-theme="dark"
@@ -49,13 +44,13 @@ export const UserSidebar = () => {
               data-accordion="false"
             >
               <li className="nav-item menu-open">
-                <a href="#" className="nav-link active">
+                <Link to="userDashbord" className="nav-link active">
                   <i className="nav-icon bi bi-speedometer" />
                   <p>
                     Dashboard
                     <i className="nav-arrow bi bi-chevron-right" />
                   </p>
-                </a>
+                </Link>
                 <ul className="nav nav-treeview">
                   <li className="nav-item">
                     <Link to="userprofile" className="nav-link active">
@@ -64,16 +59,28 @@ export const UserSidebar = () => {
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <a href="./index2.html" className="nav-link">
+                    <Link to="myTasks" className="nav-link">
                       <i className="nav-icon bi bi-circle" />
-                      <p>Dashboard v2</p>
-                    </a>
+                      <p>My Tasks</p>
+                    </Link>
                   </li>
                   <li className="nav-item">
-                    <a href="./index3.html" className="nav-link">
+                    <Link to="uploadWork" className="nav-link">
                       <i className="nav-icon bi bi-circle" />
-                      <p>Dashboard v3</p>
-                    </a>
+                      <p>UploadWork</p>
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="myReport" className="nav-link">
+                      <i className="nav-icon bi bi-circle" />
+                      <p>My Report</p>
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to="cooment" className="nav-link">
+                      <i className="nav-icon bi bi-circle" />
+                      <p>Comments</p>
+                    </Link>
                   </li>
                 </ul>
               </li>
@@ -121,4 +128,89 @@ export const UserSidebar = () => {
       </main>
    </>
   )
-}
+}     */}
+
+import React, { useState } from "react";
+import { UserNavbar } from "./UserNavbar";
+import { Link, Outlet } from "react-router-dom";
+
+export const UserSidebar = () => {
+  const [isSidebarOpen, setSidebarOpen] = useState(true);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
+  };
+
+  return (
+    <div className="d-flex" style={{ height: "100vh", overflow: "hidden" }}>
+      {/* Sidebar */}
+      <div
+        className={`bg-dark text-white p-3 sidebar shadow ${
+          isSidebarOpen ? "d-block" : "d-none"
+        }`}
+        style={{ width: "250px", transition: "0.3s" }}
+      >
+        <div className="mb-4">
+          {/*<img
+            src="../../dist/assets/img/AdminLTELogo.png"
+            alt="Logo"
+            className="img-fluid mb-2"
+            style={{ height: "40px" }}
+          />*/}
+          <span className="fs-5">AdminLTE 4</span>
+        </div>
+        <nav>
+          <ul className="nav flex-column">
+          <li className="nav-item">
+              <Link to="userDashbord" className="nav-link text-white">
+                <i className="bi bi-speedometer me-2" />
+                Dashbord
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="myTasks" className="nav-link text-white">
+                <i className="bi bi-speedometer me-2" />
+                My Tasks
+              </Link>
+            </li>
+            
+            <li className="nav-item">
+              <Link to="myReport" className="nav-link text-white">
+                <i className="bi bi-speedometer me-2" />
+                Reports
+              </Link>
+            </li>            
+          <li className="nav-item">
+              <Link to="userProject" className="nav-link text-white">
+                <i className="bi bi-speedometer me-2" />
+                User Project
+              </Link>
+            </li>            
+              <li className="nav-item">
+              <Link to="helpandSupport" className="nav-link text-white ms-3">
+              <i className="bi bi-circle me-2" />
+              Help&Support
+            </Link>
+            </li>
+            
+           
+            <li className="nav-item">
+              <Link to="logout" className="nav-link text-white">
+                <i className="bi bi-palette me-2" />
+                logout
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      {/* Main Content Area */}
+      <div className="flex-grow-1 d-flex flex-column">
+        <UserNavbar toggleSidebar={toggleSidebar} />
+        <main className="p-3 overflow-auto" style={{ flex: 1 }}>
+          <Outlet />
+        </main>
+      </div>
+    </div>
+  );
+};

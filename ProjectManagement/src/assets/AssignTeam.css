@@ -1,0 +1,106 @@
+.assign-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 24px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .assign-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .icon,
+  .icon-sm {
+    color: #007bff;
+  }
+  
+  .icon-sm {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-label {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    margin-bottom: 8px;
+    gap: 6px;
+  }
+  
+  .form-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  
+  .user-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+  }
+  
+  .user-card {
+    display: flex;
+    align-items: flex-start;
+    border: 1px solid #ccc;
+    padding: 12px;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .user-card:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .checkbox {
+    margin-right: 10px;
+    margin-top: 4px;
+  }
+  
+  .user-name {
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  
+  .user-email {
+    font-size: 13px;
+    color: #666;
+  }
+  
+  .assign-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .assign-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .error-text {
+    color: red;
+    margin-bottom: 16px;
+  }
+  

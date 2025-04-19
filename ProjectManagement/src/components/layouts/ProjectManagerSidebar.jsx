@@ -1,5 +1,4 @@
-
-import React from 'react'
+/*import React from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import { ProjectManagerNavbar } from './ProjectManagerNavbar'
 
@@ -11,11 +10,7 @@ export const ProjectManagerSidebar = () => {
    <aside
         className="app-sidebar bg-body-secondary shadow"
         data-bs-theme="dark"
-      >
-       <div style={{textAlign:"center"}}>
-           <h3> <span className="brand-text fw-light">Manage Projects</span>
-    </h3>
-        </div>
+      >      
         <div
           className=""
           data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYScroll"
@@ -33,17 +28,17 @@ export const ProjectManagerSidebar = () => {
           }}
         >
           <nav className="mt-2">
-            <ul
+          <ul
               className="nav sidebar-menu flex-column"
               data-lte-toggle="treeview"
               role="menu"
               data-accordion="false"
             >
               <li className="nav-item menu-open">
-                <Link to="dashbordm1" className="nav-link active">
+                <Link to="PMdashbord" className="nav-link active">
                   <i className="nav-icon bi bi-speedometer" />
                   <p>
-                    DashboardM1
+                    Dashboard
                     <i className="nav-arrow bi bi-chevron-right" />
                   </p>
                 </Link>
@@ -60,12 +55,12 @@ export const ProjectManagerSidebar = () => {
                       <p>Manage Tasks</p>
                     </Link>
                   </li>
-                {/*  <li className="nav-item">
-                    <Link to="myprojects" className="nav-link active">
+                  <li className="nav-item">
+                    <Link to="milestone" className="nav-link active">
                       <i className="nav-icon bi bi-circle" />
-                      <p>My Projects</p>
+                      <p>Milestone</p>
                     </Link>
-                  </li>*/}
+                  </li>
                   <li className="nav-item">
                     <Link to="projectscreen" className="nav-link active">
                       <i className="nav-icon bi bi-circle" />
@@ -78,18 +73,18 @@ export const ProjectManagerSidebar = () => {
                       <p>Team Management</p>
                     </Link>
                   </li>
-                  {/*<li className="nav-item">
-                    <Link to="mymodules" className="nav-link">
+                  <li className="nav-item">
+                    <Link to="PMSettings" className="nav-link">
                       <i className="nav-icon bi bi-circle" />
-                      <p>My Modules</p>
+                      <p>Settings </p>
                     </Link>
-                  </li>*/}
-                  {/*<li className="nav-item">
-                    <Link to="tasks" className="nav-link">
+                  </li>
+                  <li className="nav-item">
+                    <Link to="task" className="nav-link">
                       <i className="nav-icon bi bi-circle" />
                       <p>Tasks</p>
                     </Link>
-                  </li>*/}
+                  </li>
                 </ul>
               </li>
               {/*<li className="nav-item">
@@ -97,9 +92,9 @@ export const ProjectManagerSidebar = () => {
                   <i className="nav-icon bi bi-palette" />
                   <p>Users</p>
                 </Link>
-              </li>*/}
-              <li className="nav-item">
-                <Link to="reports" className="nav-link">
+              </li>*/
+             /* <li className="nav-item">
+                <Link to="Report" className="nav-link">
                   <i className="nav-icon bi bi-box-seam-fill" />
                   <p>
                     Reports
@@ -137,3 +132,99 @@ export const ProjectManagerSidebar = () => {
    </>
   )
 }
+  */
+import React, { useState } from "react";
+import { Link, Outlet } from "react-router-dom";
+import { ProjectManagerNavbar } from "./ProjectManagerNavbar";
+
+export const ProjectManagerSidebar = () => {
+  const [isSidebarOpen, setSidebarOpen] = useState(true);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
+  };
+
+  return (
+    <div className="d-flex" style={{ height: "100vh", overflow: "hidden" }}>
+      {/* Sidebar */}
+      <div
+        className={`bg-dark text-white p-3 sidebar shadow ${isSidebarOpen ? "d-block" : "d-none"}`}
+        style={{ width: "250px", transition: "0.3s" }}
+      >
+        <div className="mb-4">
+          <img
+            src="../../src/assets/landing/images/about-dots.png" // Replace with your actual logo
+            alt="Logo"
+            className="img-fluid mb-2"
+            style={{ height: "40px" }}
+          />
+          <span className="fs-5">Project Manager</span>
+        </div>
+        <nav>
+          <ul className="nav flex-column">
+            <li className="nav-item">
+              <Link to="PMdashbord" className="nav-link text-white">
+                <i className="bi bi-speedometer me-2" />
+                Dashboard
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="myprojects" className="nav-link text-white ms-3">
+                <i className="bi bi-circle me-2" />
+                My Projects
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="managetasks" className="nav-link text-white ms-3">
+                <i className="bi bi-circle me-2" />
+                Manage Tasks
+              </Link>
+            </li>
+          
+            <li className="nav-item">
+              <Link to="projectscreen" className="nav-link text-white ms-3">
+                <i className="bi bi-circle me-2" />
+                View My Project
+              </Link>
+            </li>
+            {/*<li className="nav-item">
+              <Link to="taskview" className="nav-link text-white ms-3">
+                <i className="bi bi-gear me-2" />
+             taskview
+              </Link>
+            </li>*/}
+            <li className="nav-item">
+              <Link to="assignTeam" className="nav-link text-white ms-3">
+                <i className="bi bi-gear me-2" />
+                AssignTeam
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="PMSettings" className="nav-link text-white ms-3">
+                <i className="bi bi-gear me-2" />
+                Settings
+              </Link>
+            </li>
+            
+            <li className="nav-item">
+              <Link to="logout" className="nav-link text-white ms-3">
+                <i className="bi bi-gear me-2" />
+                LogOute
+              </Link>
+            </li>
+            
+            
+          </ul>
+        </nav>
+      </div>
+
+      {/* Main Content Area */}
+      <div className="flex-grow-1 d-flex flex-column">
+        <ProjectManagerNavbar toggleSidebar={toggleSidebar} />
+        <main className="p-3 overflow-auto" style={{ flex: 1 }}>
+          <Outlet />
+        </main>
+      </div>
+    </div>
+  );
+};

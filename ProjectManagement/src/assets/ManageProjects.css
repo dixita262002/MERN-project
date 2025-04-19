@@ -1,0 +1,112 @@
+/* Container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    padding: 0 16px;
+  }
+  
+  /* Form Container */
+  .form-container {
+    width: 100%;
+    max-width: 600px;
+    background-color: #ffffff;
+    padding: 32px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Title */
+  .form-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 24px;
+    color: #0077cc;
+  }
+  
+  /* User Select */
+  .select-user {
+    margin-bottom: 24px;
+  }
+  
+  .label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+  }
+  
+  .select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .selected-user {
+    font-size: 16px;
+    font-weight: 600;
+    color: #28a745;
+    margin-bottom: 20px;
+  }
+  
+  .icon {
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+  
+  /* Input Groups */
+  .input-group {
+    margin-bottom: 20px;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .file-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .error {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 6px;
+  }
+  
+  .date-inputs {
+    display: flex;
+    gap: 16px;
+  }
+  
+  /* Submit Button */
+  .submit-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #0077cc;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .submit-btn:hover {
+    background-color: #005fa3;
+  }
+  

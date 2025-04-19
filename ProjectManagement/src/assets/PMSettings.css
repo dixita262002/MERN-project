@@ -1,0 +1,91 @@
+.pm-settings-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 2rem;
+    font-family: sans-serif;
+    background-color: #ffffff;
+    color: #111111;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .pm-settings-container.dark {
+    background-color: #1f2937;
+    color: #ffffff;
+  }
+  
+  .section {
+    background-color: #f5f5f5;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+  }
+  
+  .pm-settings-container.dark .section {
+    background-color: #2d3748;
+  }
+  
+  .section h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  input,
+  select {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100%;
+  }
+  
+  .pm-settings-container.dark input,
+  .pm-settings-container.dark select {
+    background-color: #374151;
+    color: #ffffff;
+    border-color: #555;
+  }
+  
+  label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .add-btn {
+    padding: 0.5rem 1rem;
+    background-color: #dddddd;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .pm-settings-container.dark .add-btn {
+    background-color: #4b5563;
+    color: white;
+  }
+  
+  .save-btn-container {
+    text-align: right;
+  }
+  
+  .save-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .save-btn:hover {
+    background-color: #1d4ed8;
+  }
+  

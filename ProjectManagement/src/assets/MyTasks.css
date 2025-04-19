@@ -1,0 +1,81 @@
+.task-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 25px;
+    background: #f9f9ff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .task-heading {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4a148c;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon {
+    margin-right: 8px;
+    color: #6a1b9a;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    font-size: 16px;
+    background: #fff;
+  }
+  
+  .table-wrapper {
+    margin-top: 30px;
+  }
+  
+  .table-heading {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #1a237e;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  thead {
+    background-color: #d1c4e9;
+  }
+  
+  thead th {
+    text-align: left;
+    padding: 12px;
+    color: #000;
+    font-weight: bold;
+  }
+  
+  tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    background-color: #f3e5f5;
+  }
+  
+  tbody tr:nth-child(even) td {
+    background-color: #ede7f6;
+  }
+  

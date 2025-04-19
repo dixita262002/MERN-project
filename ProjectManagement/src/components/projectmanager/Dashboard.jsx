@@ -1,84 +1,127 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { data } from 'react-router-dom'
-//import '../../assets/dashboard.css'
+import React, { useEffect, useState } from "react";
+import {
+  FaTasks,
+  FaUsers,
+  FaCheckCircle,
+  FaExclamationTriangle,
+  FaCalendarAlt,
+  FaPlus,
+  FaProjectDiagram,
+} from "react-icons/fa";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import '../../assets/Dashboard.css';
 
 export const Dashboard = () => {
-
-  const [projects, setProjects] = useState([]);
-  const [modules, setModules] = useState([]);
   const [tasks, setTasks] = useState([]);
+  const [projects, setProjects] = useState([]);
 
-  const getAllProjectes = async()=>{
-    const res = await axios.get("/project/all")
-    console.log(res.data)
-      setProjects(res.data.data)
-   }
-   const getAllModules = async()=>{
-    const res = await axios.get("/module/allmodules")
-    console.log(res.data)
-    setModules(res.data.data)
-   }
-  const getAllTasks = async()=>{
-    const res = await axios.get("/task/alltasks")
-    console.log(res.data)
-    setTasks(res.data.data)
-  }
+  const getAllTask = async () => {
+    try {
+      const res = await axios.get("http://localhost:4000/task/all");
+      setTasks(res.data);
+    } catch (err) {
+      console.error("Task fetch error:", err);
+    }
+  };
 
-    useEffect(()=>{
-     getAllProjectes()
-     getAllModules()
-     getAllTasks()
-      },[reset])
+  const getAllProjects = async () => {
+    try {
+      const res = await axios.get("http://localhost:4000/project/all");
+      setProjects(res.data);
+    } catch (err) {
+      console.error("Project fetch error:", err);
+    }
+  };
 
-  const {register,handleSubmit, reset} = useForm()
-  const submitHandler = (data)=> {
-   console.log(data)
-  }
+  useEffect(() => {
+    getAllTask();
+    getAllProjects();
+  }, []);
+
   return (
-    <div style={{textAlign:"center"}} className="dashboard-container">
-      <h3 className="dashboard-title">Dashboard Overview</h3>
-      <form onSubmit={handleSubmit(submitHandler)} className="dashboard-form">     
-     <div  className="form-group">
-      <label>Project Titles</label>
-      <select {...register("projectId")}>
-        <option>lists project </option>
-        {
-          projects?.map((project)=>{
-            return <option  key={project.id} value={project.id}>{project.title}</option> 
-          })
-        }
-      </select>
-     </div>
-     <div className="form-group">
-      <label>Module Name</label>
-      <select {...register("moduleId")}>
-        <option>list module</option>
-        {
-          modules?.map((module)=>{
-            return <option  key={module.id} value={module.id}>{module.moduleName}</option>
-          })
-        }
-      </select>
+    <div className="dashboard-container">
+      <div className="dashboard-header">
+        <h1>Project Manager Dashboard</h1>
+        <p>Welcome back! Here's an overview of the Smart Parking System project.</p>
       </div>
-      <div className="form-group">
-       <label>Task Name</label>
-        <select {...register("taskId")}>
-          <option>list tasks</option>
-          {
-            tasks?.map((task)=>{
-              return <option  key={task.id} value={task.id}>{task.taskName}</option>
-            })
-          }
-        </select>
-      </div>
-     <button type="submit" className="submit-button">
-          Submit
-        </button>
-      </form>
-        
-    </div>
-  )
 
-}
+      <div className="stats-grid">
+        <Card icon={<FaTasks />} label="Total Tasks"  value="4" />
+        <Card icon={<FaProjectDiagram />} label="Total Projects"  value="5" />
+        
+      </div>
+
+      <div className="dashboard-grid">
+        <div className="timeline-box">
+          <h2>Project Timeline</h2>
+          <div className="timeline-steps">
+            <TimelineStep phase="Planning" status="Completed" />
+            <TimelineStep phase="Development" status="In Progress" />
+            <TimelineStep phase="Testing" status="Pending" />
+            <TimelineStep phase="Deployment" status="Pending" />
+          </div>
+        </div>
+
+        <div className="quick-actions-box">
+          <h2>Quick Actions</h2>
+          <ul className="quick-actions-list">
+            <Link to="/projectmanager/managetasks">
+              <ActionItem icon={<FaPlus />} label="Add New Task" value={tasks.length} />
+            </Link>
+            <Link to="/projectmanager/myprojects">
+              <ActionItem icon={<FaCalendarAlt />} label="Assign Project" value={projects.length} />
+            </Link>
+            <Link to="/projectmanager/assignTeam">
+              <ActionItem icon={<FaUsers />} label="Manage Team" value={3} />
+            </Link>
+            <Link to="/projectmanager/taskview">
+              <ActionItem icon={<FaUsers />} label="Task Review" value={tasks.length} />
+            </Link>
+            <Link to="/projectmanager/projectscreen">
+              <ActionItem icon={<FaUsers />} label="Project Review" value={1} />
+            </Link>
+            <li>
+              <ActionItem icon={<FaCheckCircle />} label="Generate Report" />
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Card = ({ icon, label, value }) => (
+  <div className="card">
+    <div className="card-icon">{icon}</div>
+    <div>
+      <p className="card-label">{label}</p>
+      <h3 className="card-value">{value}</h3>
+    </div>
+  </div>
+);
+
+const TimelineStep = ({ phase, status }) => {
+  const statusClass = {
+    Completed: "status-completed",
+    "In Progress": "status-progress",
+    Pending: "status-pending",
+  }[status];
+
+  return (
+    <div className="timeline-step">
+      <span>{phase}</span>
+      <span className={`status-text ${statusClass}`}>{status}</span>
+    </div>
+  );
+};
+
+const ActionItem = ({ icon, label, value }) => (
+  <li className="action-item">
+    <div className="action-content">
+      <span className="action-icon">{icon}</span>
+      <span>{label}</span>
+    </div>
+    {value !== undefined && <span className="action-badge">{value}</span>}
+  </li>
+);

@@ -1,0 +1,114 @@
+/* General Styles */
+.admin-settings-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.admin-settings-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--primary-text-color);
+}
+
+.settings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.settings-card {
+    background-color: var(--card-bg);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.settings-card-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.settings-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.settings-option label {
+    font-size: 1rem;
+}
+
+.settings-layout-select select {
+    padding: 8px;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+/* Theme */
+:root {
+    --primary-bg-color: #ffffff;
+    --primary-text-color: #333333;
+    --card-bg: #f9f9f9;
+    --button-bg: #4CAF50;
+    --button-text-color: white;
+    --dark-bg-color: #333333;
+    --dark-text-color: #ffffff;
+    --dark-card-bg: #444444;
+}
+
+/* Dark Mode */
+.dark-mode {
+    background-color: var(--dark-bg-color);
+    color: var(--dark-text-color);
+}
+
+.dark-mode .settings-card {
+    background-color: var(--dark-card-bg);
+}
+
+/* High Contrast Mode */
+.high-contrast {
+    background-color: black;
+    color: yellow;
+}
+
+.high-contrast .settings-card {
+    background-color: black;
+    border: 2px solid yellow;
+    color: yellow;
+}
+
+.high-contrast .settings-option {
+    color: yellow;
+}
+
+/* Buttons */
+.theme-toggle-btn {
+    background-color: var(--button-bg);
+    color: var(--button-text-color);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.theme-toggle-btn:hover {
+    opacity: 0.8;
+}
+
+/* File Input Styling */
+input[type="file"] {
+    margin-top: 10px;
+}
+
+/* Profile Picture */
+.settings-option img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-top: 10px;
+}

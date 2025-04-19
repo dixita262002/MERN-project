@@ -1,4 +1,4 @@
-import React from 'react'
+/*import React from 'react'
 
 export const AdminNavbar = () => {
   return (
@@ -219,3 +219,149 @@ export const AdminNavbar = () => {
   );
 };
   
+*/
+
+
+
+
+
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+export const ProjectManagerNavbar = () => {
+  return (
+    <nav className="app-header navbar navbar-expand bg-body">
+      <div className="container-fluid">
+
+        {/* Left Nav Items */}
+        <ul className="navbar-nav">
+          <li className="nav-item">
+            <a className="nav-link" data-lte-toggle="sidebar" href="javascript:void(0)" role="button">
+              <i className="bi bi-list" />
+            </a>
+          </li>
+          <li className="nav-item d-none d-md-block">
+            <Link to="#" className="nav-link">Home</Link>
+          </li>
+          <li className="nav-item d-none d-md-block">
+            <Link to="#" className="nav-link">Contact</Link>
+          </li>
+        </ul>
+
+        {/* Right Nav Items */}
+        <ul className="navbar-nav ms-auto">
+
+          {/* Search Icon */}
+          <li className="nav-item">
+            <a className="nav-link" data-widget="navbar-search" href="javascript:void(0)" role="button">
+              <i className="bi bi-search" />
+            </a>
+          </li>
+
+          {/* Messages Dropdown */}
+          <li className="nav-item dropdown">
+            <a className="nav-link" data-bs-toggle="dropdown" href="javascript:void(0)">
+              <i className="bi bi-chat-text" />
+              <span className="navbar-badge badge text-bg-danger">3</span>
+            </a>
+            <div className="dropdown-menu dropdown-menu-lg dropdown-menu-end">
+              <a href="javascript:void(0)" className="dropdown-item">
+                <div className="d-flex">
+                  <img src="../../dist/assets/img/user1-128x128.jpg" alt="User" className="img-size-50 rounded-circle me-3" />
+                  <div>
+                    <h3 className="dropdown-item-title">
+                      Alice Green
+                      <span className="float-end fs-7 text-danger"><i className="bi bi-star-fill" /></span>
+                    </h3>
+                    <p className="fs-7">Project Update needed...</p>
+                    <p className="fs-7 text-secondary"><i className="bi bi-clock-fill me-1" /> 2 Hours Ago</p>
+                  </div>
+                </div>
+              </a>
+              <div className="dropdown-divider" />
+              <a href="javascript:void(0)" className="dropdown-item">
+                <div className="d-flex">
+                  <img src="../../dist/assets/img/user2-128x128.jpg" alt="User" className="img-size-50 rounded-circle me-3" />
+                  <div>
+                    <h3 className="dropdown-item-title">
+                      John Smith
+                      <span className="float-end fs-7 text-secondary"><i className="bi bi-star-fill" /></span>
+                    </h3>
+                    <p className="fs-7">Task completed</p>
+                    <p className="fs-7 text-secondary"><i className="bi bi-clock-fill me-1" /> 4 Hours Ago</p>
+                  </div>
+                </div>
+              </a>
+              <div className="dropdown-divider" />
+              <a href="javascript:void(0)" className="dropdown-item dropdown-footer">See All Messages</a>
+            </div>
+          </li>
+
+          {/* Notifications Dropdown */}
+          <li className="nav-item dropdown">
+            <a className="nav-link" data-bs-toggle="dropdown" href="javascript:void(0)">
+              <i className="bi bi-bell-fill" />
+              <span className="navbar-badge badge text-bg-warning">15</span>
+            </a>
+            <div className="dropdown-menu dropdown-menu-lg dropdown-menu-end">
+              <span className="dropdown-item dropdown-header">15 Notifications</span>
+              <div className="dropdown-divider" />
+              <a href="javascript:void(0)" className="dropdown-item">
+                <i className="bi bi-envelope me-2" /> 4 new messages
+                <span className="float-end text-secondary fs-7">3 mins</span>
+              </a>
+              <div className="dropdown-divider" />
+              <a href="javascript:void(0)" className="dropdown-item">
+                <i className="bi bi-check-circle me-2" /> Task "API Integration" completed
+                <span className="float-end text-secondary fs-7">30 mins</span>
+              </a>
+              <div className="dropdown-divider" />
+              <a href="javascript:void(0)" className="dropdown-item">
+                <i className="bi bi-file-earmark-fill me-2" /> 3 new reports
+                <span className="float-end text-secondary fs-7">1 day</span>
+              </a>
+              <div className="dropdown-divider" />
+              <a href="javascript:void(0)" className="dropdown-item dropdown-footer">See All Notifications</a>
+            </div>
+          </li>
+
+          {/* Fullscreen Toggle */}
+          <li className="nav-item">
+            <a className="nav-link" href="javascript:void(0)" data-lte-toggle="fullscreen">
+              <i data-lte-icon="maximize" className="bi bi-arrows-fullscreen" />
+              <i data-lte-icon="minimize" className="bi bi-fullscreen-exit d-none" />
+            </a>
+          </li>
+
+          {/* User Dropdown */}
+          <li className="nav-item dropdown user-menu">
+            <a href="javascript:void(0)" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+              <img src="../../dist/assets/img/user2-160x160.jpg" className="user-image rounded-circle shadow" alt="PM User" />
+              <span className="d-none d-md-inline">Project Manager</span>
+            </a>
+            <ul className="dropdown-menu dropdown-menu-lg dropdown-menu-end">
+              <li className="user-header text-bg-primary">
+                <img src="../../dist/assets/img/user2-160x160.jpg" className="rounded-circle shadow" alt="User" />
+                <p>
+                  Project Manager - Software Dept.
+                  <small>Member since Jan. 2024</small>
+                </p>
+              </li>
+              <li className="user-body">
+                <div className="row text-center">
+                  <div className="col-4"><a href="javascript:void(0)">Projects</a></div>
+                  <div className="col-4"><a href="javascript:void(0)">Tasks</a></div>
+                  <div className="col-4"><a href="javascript:void(0)">Reports</a></div>
+                </div>
+              </li>
+              <li className="user-footer">
+                <a href="javascript:void(0)" className="btn btn-default btn-flat">Profile</a>
+                <a href="javascript:void(0)" className="btn btn-default btn-flat float-end">Sign out</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
+};

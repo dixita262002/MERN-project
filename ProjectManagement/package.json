@@ -10,11 +10,24 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "axios": "^1.7.9",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^7.0.2",
+    "axios": "^1.8.4",
+    "chart.js": "^4.4.9",
+    "cloudinary": "^2.6.0",
+    "express-fileupload": "^1.5.1",
+    "lucide-react": "^0.487.0",
+    "moment": "^2.30.1",
     "react": "^18.3.1",
+    "react-chartjs-2": "^5.3.0",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.54.2",
-    "react-router-dom": "^7.2.0"
+    "react-hot-toast": "^2.5.2",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^7.2.0",
+    "react-toastify": "^11.0.5",
+    "recharts": "^2.15.2",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

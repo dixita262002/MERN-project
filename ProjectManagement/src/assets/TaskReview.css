@@ -1,0 +1,108 @@
+.task-review-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  
+  .task-review-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  
+  .no-tasks {
+    text-align: center;
+    color: #888;
+    font-size: 16px;
+  }
+  
+  .task-card {
+    border: 1px solid #ddd;
+    padding: 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .task-title {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .task-user,
+  .task-id {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .task-preview-link {
+    text-decoration: none;
+    color: #007BFF;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+  }
+  
+  .task-description {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #444;
+  }
+  
+  .desc-label {
+    font-weight: 600;
+  }
+  
+  .task-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  
+  .approve-btn,
+  .reject-btn {
+    display: flex;
+    align-items: center;
+    border: none;
+    padding: 10px 16px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+  
+  .approve-btn {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  .approve-btn:hover {
+    background-color: #218838;
+  }
+  
+  .reject-btn {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  .reject-btn:hover {
+    background-color: #c82333;
+  }
+  
+  .icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+  }
+  

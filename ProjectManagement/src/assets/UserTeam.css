@@ -1,0 +1,160 @@
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .heading {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: #2b2b2b;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .search-box {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .search-input {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #040303;
+    width: 300px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+  }
+  
+  .search-input:focus {
+    border-color: #0077ff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 119, 255, 0.2);
+  }
+  
+  .table-container {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid #191b39;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .profile-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .profile-table th, .profile-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #2e1616;
+  }
+  
+  .profile-table th {
+    background-color: #65a0ba;
+    color: #333;
+  }
+  
+  .profile-table td {
+    background-color: #fff;
+    color: #444;
+  }
+  
+  .input-field {
+    padding: 0.4rem 0.6rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #cb7a7a;
+    width: 90%;
+  }
+  
+  .icon-text {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  
+  .action-buttons button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    transition: transform 0.2s ease;
+  }
+  
+  .action-buttons button:hover {
+    transform: scale(1.1);
+  }
+  
+  .btn {
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .btn-blue {
+    background-color: #007bff;
+    color: rgb(31, 44, 158);
+  }
+  
+  .btn-yellow {
+    background-color: #ffc107;
+    color: #000;
+  }
+  
+  .btn-red {
+    background-color: #dc3545;
+    color: rgb(121, 16, 153);
+  }
+  
+  .btn-green {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .btn-gray {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  .no-data {
+    text-align: center;
+    padding: 1rem;
+    color: #888;
+    font-style: italic;
+  }
+  
+  .profile-card {
+    background-color: #f9f9f9;
+    margin-top: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  
+  .card-heading {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .profile-info-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .profile-info-table td {
+    padding: 0.6rem;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  

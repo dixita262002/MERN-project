@@ -230,4 +230,75 @@ export const UserNavbar = ({ toggleSidebar }) => {
       </div>
     </nav>
   );
+};        
+
+/*import React from "react";
+import { useNavigate } from "react-router-dom";
+import hamburgermenu from "../../assets/images/hamburgermenu.png";
+
+export const UserNavbar = ({ toggleSidebar }) => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Clear session or auth token here if any
+    localStorage.removeItem("authToken");
+    // Redirect to login page
+    navigate("/login");
+  };
+
+  return (
+    <nav className="navbar navbar-expand-lg navbar-light bg-body shadow px-3">
+      <button
+        className="btn btn-light me-3"
+        onClick={toggleSidebar}
+        style={{
+          border: "1px solid #ccc",
+          borderRadius: "5px",
+        }}
+      >
+        <img src={hamburgermenu} alt="Toggle Sidebar" style={{ height: "25px", width: "25px" }} />
+      </button>
+      <a className="navbar-brand" href="#">
+        Home
+      </a>
+      <a className="nav-link d-none d-md-block" href="#">
+        Contact
+      </a>
+      <div className="ms-auto d-flex align-items-center gap-3">
+        <i className="bi bi-search"></i>
+        <div className="dropdown">
+          <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">
+            <i className="bi bi-bell-fill"></i>
+            <span className="badge bg-warning">15</span>
+          </a>
+          <ul className="dropdown-menu dropdown-menu-end">
+            <li><a className="dropdown-item" href="#">4 new messages</a></li>
+            <li><a className="dropdown-item" href="#">8 friend requests</a></li>
+            <li><a className="dropdown-item" href="#">3 new reports</a></li>
+          </ul>
+        </div>
+        <div className="dropdown">
+          <a
+            href="#"
+            className="d-flex align-items-center text-decoration-none dropdown-toggle"
+            data-bs-toggle="dropdown"
+          >
+            <img
+              src="../../dist/assets/img/user2-160x160.jpg"
+              className="rounded-circle"
+              width="32"
+              height="32"
+              alt="User"
+            />
+            <span className="ms-2 d-none d-md-inline">Alexander Pierce</span>
+          </a>
+          <ul className="dropdown-menu dropdown-menu-end">
+            <li><a className="dropdown-item" href="#">Profile</a></li>
+            <li><button className="dropdown-item text-danger" onClick={handleLogout}>Logout</button></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  );
 };
+*/
